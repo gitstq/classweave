@@ -1,0 +1,69 @@
+{
+  "name": "classweave",
+  "version": "1.0.0",
+  "description": "ClassWeave — conditionally join and intelligently merge Tailwind CSS class names with conflict resolution (clsx + tailwind-merge in one zero-dependency toolkit). 一体化的 Tailwind 类名条件拼接与冲突合并引擎。",
+  "type": "module",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "default": "./dist/cjs/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "classweave": "./dist/cjs/bin.js",
+    "cw": "./dist/cjs/bin.js"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:fixup": "node scripts/postbuild.mjs",
+    "build": "npm run clean && npm run build:esm && npm run build:cjs && npm run build:fixup",
+    "pretest": "npm run build",
+    "test": "node --test test/",
+    "test:only": "node --test test/",
+    "lint": "tsc -p tsconfig.json --noEmit"
+  },
+  "keywords": [
+    "tailwind",
+    "tailwindcss",
+    "clsx",
+    "classnames",
+    "tailwind-merge",
+    "cn",
+    "class",
+    "merge",
+    "conflict-resolution",
+    "react",
+    "vue",
+    "zero-dependency"
+  ],
+  "author": "gitstq",
+  "license": "MIT",
+  "homepage": "https://github.com/gitstq/classweave#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gitstq/classweave.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gitstq/classweave/issues"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.0"
+  }
+}
